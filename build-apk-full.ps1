@@ -14,8 +14,7 @@ $exportConfig = @"
 import withPWA from 'next-pwa';
 
 const isDev = process.env.NODE_ENV !== 'production';
-
-export default withPWA({
+const nextConfig = {
   reactStrictMode: true,
   output: 'export',
   distDir: 'dist',
@@ -26,13 +25,15 @@ export default withPWA({
     unoptimized: true,
     domains: ['picsum.photos'],
   },
-  pwa: {
-    dest: 'public',
-    disable: true,
-    register: true,
-    skipWaiting: true,
-  },
-});
+};
+
+export default withPWA({
+  dest: 'public',
+  // On désactive le SW pendant l'export embarqué pour éviter les caches PWA
+  disable: true,
+  register: true,
+  skipWaiting: true,
+})(nextConfig);
 "@
 
 Set-Content -Path "next.config.mjs" -Value $exportConfig
