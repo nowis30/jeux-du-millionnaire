@@ -16,8 +16,26 @@ services:
         fromDatabase:
           name: hm-postgres
           property: connectionString
+      - key: NODE_ENV
+        value: production
       - key: CLIENT_ORIGIN
-        value: https://app.nowis.store,https://client-jeux-millionnaire.vercel.app,http://localhost:3000
+        value: https://nowis.store,https://app.nowis.store,https://client-jeux-millionnaire.vercel.app,http://localhost:3000
+      - key: APP_ORIGIN
+        value: https://app.nowis.store
+      - key: SITE_ORIGIN
+        value: https://nowis.store
+      - key: COOKIE_DOMAIN
+        value: ""
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COOKIE_SAME_SITE
+        value: none
+      - key: ALLOW_VERCEL_PREVIEWS
+        value: "false"
+      - key: LOG_LEVEL
+        value: info
+      - key: MIGRATE_ON_BOOT
+        value: "false"
       - key: JWT_SECRET
         generateValue: true
       - key: ADMIN_EMAIL
