@@ -1,26 +1,14 @@
 {
-  "name": "heritier-millionnaire",
+  "name": "heritier-millionnaire-workspace",
   "private": true,
   "version": "0.1.0",
-  "workspaces": [
-    "client",
-    "server",
-    "shared"
-  ],
-  "overrides": {
-    "@fastify/helmet": "10.1.1"
-  },
+  "description": "Coordination des dépôts Héritier Millionnaire à des commits explicites",
   "scripts": {
-    "dev": "npm run dev -w server",
-    "dev:client": "npm run dev -w client",
-    "dev:server": "npm run dev -w server",
-    "db:up": "docker compose up -d db",
-    "db:down": "docker compose down",
-    "db:logs": "docker compose logs -f db",
-    "build": "npm run build -w server && npm run build -w client",
-    "start": "npm run start -w server",
-    "sync:drag": "node ../scripts/sync-drag-assets.js",
-    "pipeline:drag": "powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File ../scripts/build-drag-mobile.ps1",
-    "postinstall": "npm run postinstall -w server || echo skipped && npm run postinstall -w client || echo skipped"
+    "setup": "git submodule update --init client server mobile",
+    "setup:releases": "git submodule update --init releases",
+    "verify": "node scripts/check-workspace.mjs",
+    "test": "npm run verify",
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build"
   }
 }
