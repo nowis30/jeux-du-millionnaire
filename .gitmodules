@@ -1,0 +1,12 @@
+[submodule "client"]
+	path = client
+	url = https://github.com/nowis30/client-jeux-millionnaire.git
+[submodule "server"]
+	path = server
+	url = https://github.com/nowis30/server-jeux-millionnaire.git
+[submodule "mobile"]
+	path = mobile
+	url = https://github.com/nowis30/mobile-jeux-millionnaire.git
+[submodule "releases"]
+	path = releases
+	url = https://github.com/nowis30/jeux-millionnaire-APK.git
